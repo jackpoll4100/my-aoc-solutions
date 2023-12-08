@@ -33,7 +33,7 @@ mapMap.humidityTolocation = '';
 mapMap.humidityTolocation = mapMap.humidityTolocation.split(',');
 
 let typeMap = {
-	"seed": "soil",
+  "seed": "soil",
   "soil": "fertilizer",
   "fertilizer": "water",
   "water": "light",
