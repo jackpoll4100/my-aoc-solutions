@@ -1,8 +1,10 @@
+// This code works for both part 1 and part 2
+
 // Put input times here:
-let times = [45, 97, 72, 95];
+let times = [];
 
 //Put input distances here:
-let distances = [305, 1062, 1110, 1695];
+let distances = [];
 
 let multiplier = 1;
 times.forEach((time, index)=>{
