@@ -33,42 +33,42 @@ mapMap.humidityTolocation = '';
 mapMap.humidityTolocation = mapMap.humidityTolocation.split(',');
 
 let typeMap = {
-  "seed": "soil",
-  "soil": "fertilizer",
-  "fertilizer": "water",
-  "water": "light",
-  "light": "temperature",
-  "temperature": "humidity",
-  "humidity": "location"
+    "seed": "soil",
+    "soil": "fertilizer",
+    "fertilizer": "water",
+    "water": "light",
+    "light": "temperature",
+    "temperature": "humidity",
+    "humidity": "location"
 };
 
 let seedOut = [];
 let seedLowest = false;
 
-seeds.forEach((seed)=>{
-	let currentVal = parseInt(seed);
-  let currentType = 'seed';
-  while (currentType !== 'location'){
-  	let nextType = typeMap[currentType];
-    let nextVal = -1;
-  	mapMap[currentType + 'To' + nextType ].forEach((range)=>{
-    	if (nextVal === -1){
-      	let rangeVal = range.split(' ');
-        let sourceStart = parseInt(rangeVal[1]);
-        let destStart = parseInt(rangeVal[0]);
-        let rangeSize = parseInt(rangeVal[2]);
-        if (currentVal >= sourceStart && currentVal < (sourceStart + rangeSize)){
-        	nextVal = destStart + (currentVal - sourceStart);
-        }
-      }
-    });
-    currentVal = nextVal === -1 ? currentVal : nextVal;
-    currentType = nextType;
-  }
-  seedOut.push(currentVal);
-  if ((!seedLowest && seedLowest !== 0) || currentVal < seedLowest) {
-  	seedLowest = currentVal;
-  }
+seeds.forEach((seed) => {
+    let currentVal = parseInt(seed);
+    let currentType = 'seed';
+    while (currentType !== 'location') {
+        let nextType = typeMap[currentType];
+        let nextVal = -1;
+        mapMap[currentType + 'To' + nextType].forEach((range) => {
+            if (nextVal === -1) {
+                let rangeVal = range.split(' ');
+                let sourceStart = parseInt(rangeVal[1]);
+                let destStart = parseInt(rangeVal[0]);
+                let rangeSize = parseInt(rangeVal[2]);
+                if (currentVal >= sourceStart && currentVal < (sourceStart + rangeSize)) {
+                    nextVal = destStart + (currentVal - sourceStart);
+                }
+            }
+        });
+        currentVal = nextVal === -1 ? currentVal : nextVal;
+        currentType = nextType;
+    }
+    seedOut.push(currentVal);
+    if ((!seedLowest && seedLowest !== 0) || currentVal < seedLowest) {
+        seedLowest = currentVal;
+    }
 });
 
 console.log(seedOut);
