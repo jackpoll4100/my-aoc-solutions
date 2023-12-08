@@ -7,14 +7,14 @@ let times = [];
 let distances = [];
 
 let multiplier = 1;
-times.forEach((time, index)=>{
-	let recordSum = 0;
-	for (let x = 0; x < time; x++){
-  	if ((time - x)*x > distances[index]) {
-    	recordSum += 1;
+times.forEach((time, index) => {
+    let recordSum = 0;
+    for (let x = 0; x < time; x++) {
+        if ((time - x) * x > distances[index]) {
+            recordSum += 1;
+        }
     }
-  }
-  multiplier = multiplier * recordSum;
+    multiplier = multiplier * recordSum;
 });
 
 console.log(multiplier);
