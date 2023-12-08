@@ -34,7 +34,7 @@ mapMap.humidityTolocation = mapMap.humidityTolocation.split(',');
 
 // We are traversing the map backwards to find the lowest end value that maps to a valid starting value
 let typeMap = {
-	"location": "humidity",
+  "location": "humidity",
   "humidity": "temperature",
   "temperature": "light",
   "light": "water",
