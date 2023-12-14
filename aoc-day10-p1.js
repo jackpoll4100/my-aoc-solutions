@@ -22,9 +22,6 @@ grid[startCoords[0]] = grid[startCoords[0]].replaceAt(startCoords[1], '-');
 
 function traceLoop(coord) {
 
-    if (checkedCoords.includes(`${coord}`)) {
-        return false;
-    }
     checkedCoords.push(`${coord}`);
     routeLength++;
     let checkSet = [
@@ -36,8 +33,10 @@ function traceLoop(coord) {
     let foundAdjacent = false;
     let checkIndex = 0;
     let pipe = [];
-
     while (!foundAdjacent) {
+        if (!foundAdjacent && checkIndex === checkSet.length) {
+            return;
+        }
         pipe = checkSet[checkIndex];
         if (grid[pipe[0]] && grid[pipe[0]][pipe[1]]) {
             foundAdjacent = !checkedCoords.includes(`${pipe}`) && (
@@ -56,6 +55,7 @@ function traceLoop(coord) {
         }
         checkIndex++;
     }
+
     return pipe;
 }
 
