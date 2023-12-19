@@ -136,4 +136,4 @@ galIndices.forEach((coord) => {
 // Expanding increases by a fixed amount, so we can just find the paths once, then after one expansion,
 // and then multiply by the remaining number of expansions:
 
-console.log(preExpand + 999999*(out - preExpand));
+console.log(preExpand + 999999 * (out - preExpand));
